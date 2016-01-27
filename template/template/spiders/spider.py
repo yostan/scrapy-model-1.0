@@ -32,10 +32,11 @@ class templateSpider(CommonSpider):
     name = "template"
     allowed_domains = ["template.com"]
     start_urls = [
-        "http://www.template.com/",
+        "http://newhouse.gz.fang.com/house/s/fanyu/",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_11', follow=True),
+        Rule(sle(allow=("/house/s/nansha/$", )), follow=True),
+        Rule(sle(allow=("/house/s/nansha/b[0-9]+/$", )), callback='parse_11', follow=True),
     ]
 
     all_css_rules = {

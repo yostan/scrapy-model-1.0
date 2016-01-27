@@ -14,24 +14,24 @@ Don't use it to do anything illegal!
 
 #### Example to hack `items.py` and `spider.py`
 
-Hacked `items.py` with additional fields `url` and `description`:  
-```
-from scrapy.item import Item, Field
+    Hacked `items.py` with additional fields `url` and `description`:  
+    ```
+    from scrapy.item import Item, Field
 
-class exampleItem(Item):
-    url = Field()
-    name = Field()
-    description = Field()
-```
+    class exampleItem(Item):
+        url = Field()
+        name = Field()
+        description = Field()
+    ```
 
-Hacked `spider.py` with start rules and css rules (here only display the class exampleSpider):  
-```
-class exampleSpider(CommonSpider):
-    name = "dmoz"
-    allowed_domains = ["dmoz.org"]
-    start_urls = [
-        "http://www.dmoz.com/",
-    ]
+    Hacked `spider.py` with start rules and css rules (here only display the class exampleSpider):  
+    ```
+    class exampleSpider(CommonSpider):
+        name = "dmoz"
+        allowed_domains = ["dmoz.org"]
+        start_urls = [
+            "http://www.dmoz.com/",
+        ]
     # Crawler would start on start_urls, and follow the valid urls allowed by below rules.
     rules = [
         Rule(sle(allow=["/Arts/", "/Games/"]), callback='parse007', follow=True),
@@ -52,7 +52,7 @@ class exampleSpider(CommonSpider):
         # parse_with_rules is implemented here:
         #   https://github.com/geekan/scrapy-examples/blob/master/misc/spider.py
         self.parse_with_rules(response, self.css_rules, exampleItem)
-```
+    ```
 
 ***
 
